@@ -1,0 +1,3 @@
+{
+	"dbConnection": "mongodb://localhost/api-books"
+}
