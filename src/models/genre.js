@@ -13,11 +13,6 @@ var genreSchema = mongoose.Schema({
 
 const Genre = module.exports = mongoose.model('Genre', genreSchema);
 
-// Get Genres
-module.exports.getGenres = (cb, limit) => {
-	Genre.find(cb).limit(limit);
-};
-
 module.exports.addGenre = (genre, cb) => {
 	Genre.create(genre, cb);
 };

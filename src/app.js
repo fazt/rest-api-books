@@ -1,5 +1,4 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const app = express();
 
 // Mongodb Settings
@@ -8,20 +7,17 @@ const { dbConnection } = require('./config.json')
 // Mongodb Connection
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect(dbConnection, {
-	useMongoClient: true
-})
+
+mongoose.connect(dbConnection)
 .then((db) => console.log(`db connected!`))
 .catch(err => console.log(`db error: ${err.message}`));
-
-const db = mongoose.connection;
 
 // settings
 app.set('port', 3000);
 app.set('json spaces', 4);
 
 // middlewares
-app.use(bodyParser.json());
+app.use(express.json());
 
 // routes
 const indexRoutes =require('./routes/index');
